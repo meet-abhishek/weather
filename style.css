@@ -23,6 +23,7 @@ body {
     border-radius: 1rem;
     box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
     position: relative; /* For absolute positioning of suggestion box */
+    z-index: 1; /* Ensures this element is above others */
 }
 
 .city-input {
