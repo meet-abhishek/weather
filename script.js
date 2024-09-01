@@ -44,6 +44,7 @@ document.getElementById('getWeatherBtn').addEventListener('click', () => {
     if (cityInput) {
         getWeather(cityInput, unitsInput).then(result => {
             document.getElementById('weatherResult').innerText = result;
+            document.getElementById('suggestionBox').innerHTML = ''; // Clear suggestions after fetching weather
         });
     } else {
         document.getElementById('weatherResult').innerText = "Please Enter the FUCKING city";
@@ -53,12 +54,12 @@ document.getElementById('getWeatherBtn').addEventListener('click', () => {
 // Event listener for city input
 document.getElementById('cityInput').addEventListener('input', (event) => {
     const inputValue = event.target.value.trim().toLowerCase();
-    
+
     if (inputValue.length > 2) { // Only fetch suggestions for more than 2 characters
         getCitySuggestions(inputValue).then(suggestions => {
             const suggestionBox = document.getElementById('suggestionBox');
             suggestionBox.innerHTML = '';
-            
+
             suggestions.forEach(suggestion => {
                 const div = document.createElement('div');
                 div.textContent = suggestion;
@@ -70,5 +71,7 @@ document.getElementById('cityInput').addEventListener('input', (event) => {
                 suggestionBox.appendChild(div);
             });
         });
+    } else {
+        document.getElementById('suggestionBox').innerHTML = ''; // Clear suggestions if input is short
     }
 });
