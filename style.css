@@ -22,6 +22,7 @@ body {
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+    position: relative; /* For absolute positioning of suggestion box */
 }
 
 .city-input {
@@ -75,6 +76,29 @@ button:hover {
 
 .result {
     margin-top: 1rem;
+}
+
+/* Suggestion box styles */
+.suggestion-box {
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    margin-top: 5px;
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    border-radius: 0.5rem;
+    z-index: 1000;
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.suggestion-item:hover {
+    background-color: #e9ecef;
 }
 
 @media (max-width: 1080px) {
